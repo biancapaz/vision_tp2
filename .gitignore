@@ -4,7 +4,9 @@ __pycache__/
 *$py.class
 
 # salidas porque es pesado
-salidas/
+salidas/*
+!salidas/final/
+
 
 # C extensions
 *.so

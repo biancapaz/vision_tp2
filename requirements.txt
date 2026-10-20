@@ -1,3 +1,7 @@
-matplotlib
-opencv-python
-pyyaml
+# Versiones con las que se generaron los resultados del informe
+opencv-python==5.0.0.93
+open3d==0.20.0
+numpy==2.5.1
+matplotlib==3.11.1
+pyyaml==6.0.3
+ipykernel==7.3.0
