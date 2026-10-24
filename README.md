@@ -64,25 +64,24 @@ es lo más lento.
 ## Estructura
 
 ```
+Informe.pdf                 informe del trabajo
 data/
   calib/                    pares del tablero de calibración (28 pares, cuadros de 24.2 mm)
   objeto1/                  pares estéreo del muñeco: left_{i}.jpg / right_{i}.jpg, i = 0..30
-  objeto2/                  pares estéreo de un segundo objeto (no procesado, ver Notas)
   stereo_calibration.pkl    resultado de calib-stereo: K, dist, R, T de las dos cámaras
 reconstruccion3d.ipynb      todo el pipeline
 figuras/                    figuras del informe 
 salidas/                    resultados 
-  final/stormtrooper_final.ply   nube final optimizada (entregable)
-  final/stormtrooper_malla.ply   malla de Poisson (opcional)
+  final/stormtrooper_final.ply   nube final optimizada 
+  final/stormtrooper_malla.ply   malla de Poisson 
 ```
 
 ## Notas
-- **`data/objeto2`:** son capturas de un segundo objeto que    tomamos en clase pero no procesamos; todo el
-  pipeline y los resultados del informe corresponden a `data/objeto1`.
+
 - **Versión de OpenCV:** usar 5.0. Con 4.13 el detector ChArUco no devuelve esquinas en los pares 25 y 28 y quedan
   24 poses en lugar de 26, lo que cambia todos los resultados siguientes.
-- **No usar `data/stereo_maps.pkl`:** está generado con `alpha=0`, que hace un zoom de ×4.5 y deja el objeto
-  fuera de la imagen rectificada. El notebook recalcula los mapas con `alpha=-1`.
+- **Mapas de rectificación:** el notebook los recalcula con `alpha=-1`. Los que genera `calib-stereo` usan
+  `alpha=0`, que hace un zoom de ×4.5 y deja el objeto fuera de la imagen rectificada.
 - **Poisson** (sección 17) se llama con `n_threads=1`: con varios hilos, Open3D 0.20 se cuelga en esta nube
   ("Failed to close loop") y mata el kernel.
 
